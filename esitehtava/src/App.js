@@ -5,7 +5,21 @@ import Tweet from './tweet';
 
 
 function App(){
- 
+  var mysql = require('mysql');
+
+  var con = mysql.createConnection({
+    host: "eu-cdbr-west-02.cleardb.net",
+    user: "b48a927bef98b2",
+    password: "bac0dd94"
+  });
+  
+  con.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+  });
+
+
+  
   const [count, setCount] = useState(2); // pelaajan pisteet
   const [click, setClick] = useState(0); // klikkaukset, muista vaihtaa, niin että hakee tiedostosta
   const increment = () => {
