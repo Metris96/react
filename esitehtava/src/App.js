@@ -26,7 +26,7 @@ function App(){
     count = document.cookie;
   }
   
-  var muuttuja = 10 - click % 10; // montako klikkausta seuraavaan voittoon
+  var muuttuja = 10 - document.cookie % 10; // montako klikkausta seuraavaan voittoon
   
   function checkWin(click){
     if(click % 500 == 0  && click != 0){ // jos klikkausluku on jaollinen 500 eli joka 500 klikkaus, niin annetaan voitto
