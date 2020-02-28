@@ -10,23 +10,19 @@ if(count == "" || count == 0){
 
 function App(){
  
-  
-
- 
-  console.log("Keksin arvo on " + count)
   //const [count, setCount] = useState(20); // pelaajan pisteet
   const [click, setClick] = useState(1); // klikkaukset, muista vaihtaa, niin että hakee tiedostosta
-  const increment = () => {
+  const increment = () => { // kasvasttaa klikkauksen arvoa ja muuttaa keksiä
   setClick (click + 1)
-  console.log("tämä on " + click + " klikkaus")
+  
     count = count -1;
     checkWin(click)
     document.cookie =count;
     count = document.cookie;
   }
-  const reStart = () => {
+  const reStart = () => { //käynnistää pelin uudestaan
     setClick (click + 1)
-    console.log("tämä on " + click + " klikkaus")
+    
       count = 20;
       document.cookie =count;
       count = document.cookie;
