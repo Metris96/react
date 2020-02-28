@@ -1,5 +1,9 @@
 import React, {useState, useReducer} from 'react';
 import Tweet from './tweet';
+//import Db from './dbconnection';
+const fs = require('fs');
+
+
 
 //import Clicker from './clicker';
 var count = document.cookie;
@@ -25,8 +29,16 @@ function App(){
     document.cookie =count;
     count = document.cookie;
   }
+  const reStart = () => {
+    setClick (click + 1)
+    console.log("tämä on " + click + " klikkaus")
+      count = 20;
+      console.log(count)
+      document.cookie =count;
+      count = document.cookie;
+    }
   
-  var muuttuja = 10 - document.cookie % 10; // montako klikkausta seuraavaan voittoon
+  var muuttuja = 10 - click % 10; // montako klikkausta seuraavaan voittoon
   
   function checkWin(click){
     if(click % 500 == 0  && click != 0){ // jos klikkausluku on jaollinen 500 eli joka 500 klikkaus, niin annetaan voitto
@@ -50,24 +62,27 @@ function App(){
     }
 
   }
-  function reStart(){
-    count =20
+  /*function reStart(){
+    count =  20
     console.log(document.cookie)
+    setCookie(count);
+
+  }*/
+  function setCookie(count){
     document.cookie = count;
     count = document.cookie;
-
   }
   if(count == 0){
     return(
       <div className="App">
-        <p>voi rähmä, hävisit pelin. voit aloittaa udeelleen käynnistämällä sivun uudelleen</p>
-        {/*<button onClick={reStart}>aloita alusta</button>}
-        <p>Pisteesi nollaantuvat</p>*/}
+        <p>voi rähmä, hävisit pelin. voit aloittaa udeelleen käynnistämällä sivun</p>
+        <button onClick={reStart}>aloita alusta</button>
+        <p>Pisteesi nollaantuvat</p>
       </div>
     );
   }
-  else{  
-  return (
+  else if(count > 0){
+  return(
     <div className='App'>
       <p>pisteesi ovat: {count}</p>
       <p>seuraavaan voittoon vaadittavat klikkaukset: {muuttuja}</p>
@@ -76,6 +91,7 @@ function App(){
      
      </div>    
   );
-}}
+}
+}
 
 export default App;
