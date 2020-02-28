@@ -1,11 +1,7 @@
 import React, {useState, useReducer} from 'react';
 import Tweet from './tweet';
-//import Db from './dbconnection';
-const fs = require('fs');
 
 
-
-//import Clicker from './clicker';
 var count = document.cookie;
 if(count == "" || count == 0){
   document.cookie=" =20; expires=Thu, 18 Dec 2022 12:00:00 UTC; path=/";
@@ -62,12 +58,6 @@ function App(){
     }
 
   }
-  /*function reStart(){
-    count =  20
-    console.log(document.cookie)
-    setCookie(count);
-
-  }*/
   function setCookie(count){
     document.cookie = count;
     count = document.cookie;
